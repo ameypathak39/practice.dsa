@@ -1,1 +1,12 @@
+In computer terms, a data structure is a Specific way to store and organize data in a computer's 
+memory so that these data can be used efficiently later. 
+
+Data may be arranged in many different ways such as the logical or mathematical model for a particular
+organization of data is termed as a data structure. 
+
+Firstly, it must be loaded enough in structure to reflect the actual relationships of
+the data with the real world object.
+
+Secondly, the formation should be simple enough so that anyone can efficiently
+process the data each time it is necessary.
 
