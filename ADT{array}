@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the abstract data type
+typedef struct {
+    int *arr;         // Pointer to the array
+    int size;         // Number of elements in the array
+} Array;
+
+// Function to create a new array
+Array *createArray(int size) {
+    Array *newArray = (Array *)malloc(sizeof(Array));
+    if (newArray == NULL) {
+        perror("Memory allocation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    newArray->size = size;
+    newArray->arr = (int *)malloc(size * sizeof(int));
+    if (newArray->arr == NULL) {
+        perror("Memory allocation failed");
+        free(newArray);
+        exit(EXIT_FAILURE);
+    }
+
+    return newArray;
+}
+
+// Function to access an element at a given index
+int getElement(Array *array, int index) {
+    if (index < 0 || index >= array->size) {
+        printf("Index out of bounds\n");
+        exit(EXIT_FAILURE);
+    }
+    return array->arr[index];
+}
+
+// Function to set an element at a given index
+void setElement(Array *array, int index, int value) {
+    if (index < 0 || index >= array->size) {
+        printf("Index out of bounds\n");
+        exit(EXIT_FAILURE);
+    }
+    array->arr[index] = value;
+}
+
+// Function to free the memory occupied by the array
+void destroyArray(Array *array) {
+    free(array->arr);
+    free(array);
+}
+
+int main() {
+    int size = 5;
+    Array *myArray = createArray(size);
+
+    for (int i = 0; i < size; i++) {
+        setElement(myArray, i, i * 10);
+    }
+
+    for (int i = 0; i < size; i++) {
+        printf("Element at index %d: %d\n", i, getElement(myArray, i));
+    }
+
+    destroyArray(myArray);
+
+    return 0;
+}
