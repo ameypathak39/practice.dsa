@@ -1,0 +1,26 @@
+#include<stdio.h>
+
+int main() {
+    int arr[] = {10, 20, 35, 50, 62};
+    int k = 30, n = 5;
+    int i, j = 0; // Initialize j to 0
+    printf("Given array elements are:\n");
+    for (i = 0; i < n; i++)
+    {
+        printf("arr[%d] = %d,", i, arr[i]);
+    }
+    i = k;
+    while (i < n) // Use i instead of j in the condition
+    {
+        arr[i - 1] = arr[i];
+        i = i + 1;
+    }
+    n = n - 1;
+    printf("\nElements of array after deletion:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("arr[%d] = %d,", i, arr[i]);
+    }
+    return 0;
+}
